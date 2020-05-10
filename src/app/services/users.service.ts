@@ -20,10 +20,19 @@ export class UsersService {
   private apiUrl = 'http://localhost:8888/api';
 
   // Inicializa o cliente HTTP
-    constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
 // Método para obter todos os usuários
-getUsers(): Observable<ResponseUsers> {
-  return this.http.get<ResponseUsers>(this.apiUrl);
-}
+  getUsers(): Observable<ResponseUsers> {
+   return this.http.get<ResponseUsers>(this.apiUrl);
+  }
+
+// Método para obter um ùnico usuário
+  getUser(id: string): Observable<ResponseUsers> {
+
+   // Formata a URL para obter usuário ùnico pelo Id
+   const url = `${this.apiUrl}?id=${id}`;
+
+   return this.http.get<ResponseUsers>(url);
+  }
 }

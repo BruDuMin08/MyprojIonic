@@ -38,12 +38,17 @@ const routes: Routes = [
     loadChildren: () => import('./users/listusers/listusers.module').then( m => m.ListusersPageModule)
   },
 
+  // Rota para exibir detalhes do usuário
+  {
+    path: 'usuarios/usuario/:id',
+    loadChildren: () => import('./users/user/user.module').then( m => m.UserPageModule)
+  },
+
   //Carrega a página e404 caso a rota não seja encontrada
   {
   path: '**',
     loadChildren: () => import('./pages/e404/e404.module').then( m => m.E404PageModule)
-  },
-];
+  } ];
 
 @NgModule({
   imports: [

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { NavController } from '@ionic/angular';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePage implements OnInit {
 
-  constructor() { }
+  constructor( public navCtrl: NavController ) { }
 
   ngOnInit() {
+  }
+  
+// Ação do botão "Listar usuários"
+  listUsers() {
+    this.navCtrl.navigateForward('usuarios/todos');
   }
 
 }
