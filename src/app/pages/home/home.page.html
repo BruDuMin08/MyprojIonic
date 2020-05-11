@@ -10,13 +10,19 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
 
-  <div class="content">
     <p>Você está na página Inicial da aplicação</p>
 
     <ion-button expand="block" class="ion-margin-bottom" (click)="listUsers()">Listar usuários</ion-button>
+    <ion-button expand="block" class="ion-margin-bottom" (click)="createUsers()">Criar usuários</ion-button>
     
-</div>
+    <hr>
+    <p>Status da aplicação:</p>
+    <ul>
+      <li>Listando usuários</li>
+      <li>Exibe detalhes de um usuário</li>
+      <li>Apaga um usuário</li>
+    </ul>
 
 </ion-content>

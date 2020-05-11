@@ -1,0 +1,46 @@
+<!-- <p class="ion-maring" *ngIf="!userForm.control.id.value">
+  Preencha os campos abaixo com atenção para cadastrar um novo usuário.
+</p>
+
+<p class="ion-maring" *ngIf="userForm.control.id.value">
+  Preencha os campos abaixo com atenção para editar um novo usuário.
+</p> --> 
+
+<form [formGroup]="userForm" ((ngSubmit)="onSubmit()">
+<input type="hidden" id="id" name="id" formControlName="id">
+
+<ion-list lines="full" class="ion-margin">
+
+  <!-- Campo 'name' -->
+  <ion-item>
+
+    <ion-label for="name" position="floating" color="primary">Nome:</ion-label>
+    <ion-input type="text" id="name" name="name" formControlName="name"></ion-input>
+  </ion-item>
+
+  <!-- Campo 'email' -->
+  <ion-item>
+
+    <ion-label for="email" position="floating" color="primary">E-mail:</ion-label>
+    <ion-input type="text" id="email" name="email" formControlName="email"></ion-input>
+  </ion-item>
+
+  <!-- Campo do 'avatar' -->
+  <ion-item>
+
+    <ion-label for="avatar" position="floating" color="primary">URL do avatar:</ion-label>
+    <ion-input type="url" id="avatar" name="avatar" formControlName="avatar"></ion-input>
+  </ion-item>
+
+  <!-- Campo do 'status' -->
+  <ion-item>
+
+    <ion-label for="status" color="primary">Status:</ion-label>
+    <ion-toggle id="status" name="status" slot="end" formControlName="status"></ion-toggle>
+  </ion-item>
+
+</ion-list>
+
+<ion-button type="submit" expand="block" class="ion-margin">Criar usuário</ion-button>
+
+</form>

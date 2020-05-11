@@ -44,11 +44,18 @@ const routes: Routes = [
     loadChildren: () => import('./users/user/user.module').then( m => m.UserPageModule)
   },
 
+  // Rota para cadastrar usuários
+  {
+    path: 'usuarios/criar',
+    loadChildren: () => import('./users/create/create.module').then( m => m.CreatePageModule)
+  },
+
   //Carrega a página e404 caso a rota não seja encontrada
   {
   path: '**',
     loadChildren: () => import('./pages/e404/e404.module').then( m => m.E404PageModule)
-  } ];
+  },
+];
 
 @NgModule({
   imports: [
