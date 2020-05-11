@@ -10,6 +10,9 @@ import { User } from '../../models/users.model';
 // 2) Importa o service dos usuários
 import { UsersService } from '../../services/users.service';
 
+// importa classe de navegação
+import { NavController } from '@ionic/angular';
+
 @Component({
   selector: 'app-user',
   templateUrl: './user.page.html',
@@ -31,8 +34,11 @@ export class UserPage implements OnInit {
     // 1) Inicializa rotas dinâmicas para obter o Id
     private route: ActivatedRoute,
 
-    // 2) Inicializa o service
-    private usersService: UsersService
+    // 2) Inicializa o service dos usuários
+    private usersService: UsersService,
+
+    // Navegação
+    private navCtrl: NavController
 
   ) { }
 
@@ -77,7 +83,46 @@ export class UserPage implements OnInit {
 
   // Ação do botão Apagar
   delUser(id: string, name: string) {
-    alert(`Apagando ${name}`);
+
+    // Confirmação
+    if ( !confirm(`
+    Tem certeza que deseja apagar "${name}"?\n    
+    Esta ação é irreversível!\n
+    Clique em [ok] para apagar e [Cancelar] para não apagar...`
+    )) {
+
+      // Sai sem fazer nada
+      return false;
+    }
+
+    // Apaga o registro com o id informado
+    this.usersService.deleteUser(this.id).subscribe(
+      (res: any) => {
+
+        // Se apagou
+        if (res.status === 'success' && res.result === 'Record deleted successfully') {
+
+          // Feedback
+          alert('Usuário apagado com sucesso!\n\nClique em [ok] para continuar...');
+
+          // Retorna para a listagem de usuários
+          this.navCtrl.navigateForward('usuarios/todos');
+
+          // Se não conseguiu apagar
+        } else {
+
+          // Erro
+          console.error('falha ao apagar usuário', res.result);
+
+        }
+        }
+
+    );
+
+  }
+  // Ação do botão listar usuários
+  listUsers() {
+    this.navCtrl.navigateForward('usuarios/todos');
   }
 }
 

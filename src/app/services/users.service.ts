@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 
 
 // Modelagem dos dados
-import { ResponseUsers } from '../models/users.model';
+import { ResponseUsers, ResponseDelUser } from '../models/users.model';
 
 
 @Injectable({
@@ -35,4 +35,14 @@ export class UsersService {
 
    return this.http.get<ResponseUsers>(url);
   }
+
+// Método para obter um ùnico usuário
+deleteUser(id: string): Observable<ResponseDelUser> {
+
+  // Formata a URL para apagar usuário ùnico pelo Id
+  const url = `${this.apiUrl}?id=${id}`;
+
+  return this.http.delete<ResponseDelUser>(url);
+ }
+
 }
