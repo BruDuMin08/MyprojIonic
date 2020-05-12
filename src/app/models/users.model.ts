@@ -25,3 +25,9 @@ export interface ResponseDelUser {
     status: string;
     result: string;
 }
+
+// O que esperar do response de post
+export interface ResponsePostUser {
+    status: string;
+    result: string;
+}
