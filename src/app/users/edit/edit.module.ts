@@ -16,7 +16,7 @@ import { CreatePageModule } from '../create/create.module';
     IonicModule,
     EditPageRoutingModule,
 
-    // Inicializa componente do formulário à partir de CreatePageModule
+    // Inicializa componente do formulario à partir de CreatePageModule
     CreatePageModule,
 
     // Inicializa o ReactiveForms

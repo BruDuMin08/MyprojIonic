@@ -3,14 +3,23 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 // Importa o service da API
 import { UsersService } from '../../services/users.service';
+
+// Importa roteamento
 import { NavController } from '@ionic/angular';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-user-form',
+  selector: 'app-userform',
   templateUrl: './user-form.component.html',
   styleUrls: ['./user-form.component.scss'],
 })
 export class UserFormComponent implements OnInit {
+
+  // Variável que contém o Id do usuário editado
+  id = this.route.snapshot.paramMap.get('id');
+
+  // Variável que verifica se não tem usuário a exibir
+  noUser = false;
 
   // Cria formulário
   public userForm: FormGroup;
@@ -23,7 +32,10 @@ export class UserFormComponent implements OnInit {
     private usersService: UsersService,
 
     // Roteamento
-    public navCtrl: NavController
+    public navCtrl: NavController,
+
+    // Configura route
+    private route: ActivatedRoute
   ) {
 
     // Definindo campos do formulário
@@ -62,11 +74,37 @@ export class UserFormComponent implements OnInit {
 
         // Campo 'status'
         status: [1]
-      }
-    );
+     });
    }
 
-  ngOnInit() { }
+  ngOnInit() {
+    // Se temos um Id na rota...
+    if (this.id) {
+
+      // Consulta a API para o Id informado
+      this.usersService.getUser(this.id).subscribe(
+
+        // Obtém dados
+        (res: any) => {
+
+          // Se o resultado não existe
+          if (res.result === 'No record found') {
+
+            // Feedback na página HTML
+            this.noUser = true;
+
+            // Sai sem fazer nada
+            return false;
+
+        // Se o usuário existe
+          } else{
+
+
+          }
+        }
+      );
+    }
+   }
 
   // Processa formulário enviado
   onSubmit() {
@@ -94,7 +132,7 @@ export class UserFormComponent implements OnInit {
         (res: any) => {
 
           // Se foi adicionado
-          if(res.status === 'success'){
+          if (res.status === 'success') {
 
             // Feedback
             alert(`"${this.userForm.value.name}" Foi adicionado com sucesso!\nClique em [Ok] para continuar...`);
@@ -117,4 +155,8 @@ export class UserFormComponent implements OnInit {
 
     }
   }
+
+    listUsers() {
+      this.navCtrl.navigateForward('usuarios/todos');
+    }
 }

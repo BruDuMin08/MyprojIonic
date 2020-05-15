@@ -1,3 +1,13 @@
+<!-- Se usuário não existe -->
+<ion-list *ngIf="noUser">
+  <ion-item color="danger">
+    <ion-label class="ion-text-center">Usuário não encontrado!</ion-label>
+  </ion-item>
+  <ion-button expand="block" class="ion-margin" (click)="listUsers()">Listar usuários</ion-button>
+</ion-list>
+<!-- Se usuário existe ou está criando um novo -->
+<div *ngIf="!noUser">
+
 <p class="ion-margin" *ngIf="!userForm.controls.id.value">
   Preencha os campos abaixo com atenção para cadastrar um novo usuário.
 </p>
