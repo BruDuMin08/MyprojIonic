@@ -30,7 +30,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   exports: [
 
     // Exporta componente do formulário do usuário para uso em outras páginas
-    UserformComponent
+    UserFormComponent
   ]
 })
 export class CreatePageModule {}

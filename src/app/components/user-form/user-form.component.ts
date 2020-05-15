@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+
+// Importa bibliotecas do formulário
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 // Importa o service da API
@@ -25,7 +27,7 @@ export class UserFormComponent implements OnInit {
   public userForm: FormGroup;
 
   constructor(
-    // Construtor do formulário reativo
+    // Construtor do ReactiveForms
     private formBuilder: FormBuilder,
 
     // Inicializa service da API
@@ -97,7 +99,7 @@ export class UserFormComponent implements OnInit {
             return false;
 
         // Se o usuário existe
-          } else{
+          } else {
 
 
           }

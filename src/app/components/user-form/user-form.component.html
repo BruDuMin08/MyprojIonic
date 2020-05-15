@@ -5,6 +5,7 @@
   </ion-item>
   <ion-button expand="block" class="ion-margin" (click)="listUsers()">Listar usuários</ion-button>
 </ion-list>
+
 <!-- Se usuário existe ou está criando um novo -->
 <div *ngIf="!noUser">
 
@@ -81,3 +82,4 @@
 <ion-button type="submit" expand="block" class="ion-margin" [disabled]="!userForm.valid">Criar usuário</ion-button>
 
 </form>
+</div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgModule } from '@angular/core';
 
 // 1) Rotas dinâmicas
 import { ActivatedRoute } from '@angular/router';
@@ -12,6 +12,7 @@ import { UsersService } from '../../services/users.service';
 
 // importa classe de navegação
 import { NavController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-user',
